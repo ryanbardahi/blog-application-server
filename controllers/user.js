@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const { generateToken } = require('../auth');
 
 module.exports.registerUser = async (req, res) => {
     const { email, username, password } = req.body;
@@ -22,7 +23,6 @@ module.exports.loginUser = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ error: 'Invalid email or password' });
 
-        // Generate JWT token
         const token = generateToken(user);
 
         res.status(200).json({
