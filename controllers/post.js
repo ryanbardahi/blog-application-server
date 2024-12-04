@@ -11,7 +11,7 @@ module.exports.getAllPosts = async (req, res) => {
 
 module.exports.getPostById = async (req, res) => {
     try {
-        const post = await Post.findById(req.params.id).populate('author', 'username');
+        const post = await Post.findById(req.params.id).populate('author', '_id username');
         res.status(200).json(post);
     } catch (error) {
         res.status(500).json({ error: error.message });
