@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended:true}));
 const corsOptions = {
     origin: [
         'http://localhost:3000',
-        'https://blog-application-client-green.vercel.app/'
+        'https://blog-application-client-green.vercel.app'
     ],
     credentials: true,
     optionsSuccessStatus: 200
