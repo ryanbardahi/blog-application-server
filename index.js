@@ -4,6 +4,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
+const messageRoutes = require('./routes/messageRoutes');
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ mongoose.connection.once('open',()=>console.log("Now connected to MongoDB Atlas"
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 app.use('/comments', commentRoutes);
+app.use('/messages', messageRoutes);
 
 if (require.main === module) {
     const PORT = 4000;
