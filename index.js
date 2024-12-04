@@ -4,7 +4,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
-const messageRoutes = require('./routes/messageRoutes');
+const messageRoutes = require('./routes/message');
 
 const app = express();
 app.use(express.json());
