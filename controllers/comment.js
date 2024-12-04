@@ -12,9 +12,17 @@ module.exports.getCommentsByPost = async (req, res) => {
 module.exports.addComment = async (req, res) => {
     const { content } = req.body;
     try {
-        const newComment = new Comment({ content, post: req.params.postId, author: req.user.id });
+        const newComment = new Comment({ 
+            content, 
+            post: req.params.postId, 
+            author: req.user.id 
+        });
+
         await newComment.save();
-        res.status(201).json(newComment);
+
+        const populatedComment = await Comment.findById(newComment._id).populate('author', 'username');
+
+        res.status(201).json(populatedComment);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
