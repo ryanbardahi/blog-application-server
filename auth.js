@@ -27,7 +27,6 @@ module.exports.isAdmin = (req, res, next) => {
 module.exports.generateToken = (user) => {
     return jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
-        JWT_SECRET_KEY,
-        { expiresIn: '1h' }
+        JWT_SECRET_KEY
     );
 };
